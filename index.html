@@ -22,11 +22,24 @@
       </section>
 
       <section>
+        <h3>Who am I?</h3>
+        <img src="./images/daniel.jpeg" style="float: right; width: 180px; border-radius: 20px;" />
+
+        <p style="text-align: left;">
+          Daniël Beeke<br />
+          Software Engineer,<br />
+          Working at MediaWorks<br /><br />
+          <em>Working on digital media<br />communities with RDF at its core</em>
+        </p>
+      </section>
+
+      <section>
         <h3>Chapters</h3>
         <ul>
           <li>About streams</li>
           <li>The concept</li>
           <li>The building process</li>
+          <li>Demo</li>
         </ul>
       </section>
 
@@ -128,6 +141,11 @@
         </section>
   
         <section>
+          <h3>My interest</h3>
+          <p>Our system will be available to fetch data from this system</p>
+        </section>
+  
+        <section>
           <h3>Some considerations...</h3>
           <ul>
             <li>Low maintenance</li>
@@ -190,10 +208,61 @@
         </section>
 
         <section>
-          <h3>An earlier system had existed with a database</h3>
-          <em>I got into contact with them and learned some lessons from them</em>
+          <h3>An earlier system had<br/>existed with a database</h3>
+          <em>I got into contact with them<br /> and learned some lessons from them</em>
         </section>
 
+        <section>
+          <h3>My brother in law joined</h3>
+          <em>He helped me clean up the interfaces</em>
+        </section>
+
+        <section>
+          <h3>The hardest part was getting the pagination right</h3>
+          <em>The application is restful, a next URL must have all the information to trigger each source from the right position.</em>
+        </section>
+
+        <section>
+          <h3>Example URL</h3>
+          <div style="text-align: left; display: inline-block;">
+            <em>https://bundled.media/search?
+              <br /><strong>fulltextSearch</strong>=Prodigal&
+              <br /><strong>limit</strong>=30&
+              <br /><strong>pagination</strong>=d|d|d|d|d|d|d|d|p1.s23|p1.s0|d|&
+              <br /><strong>lastIndex</strong>=9
+            </em>
+          </div>
+        </section>
+
+        <section>
+          <h3>At this point /search worked</h3>
+          <em>Clicking on the last pager item would add a new pager item if not all sources were done.</em>
+        </section>
+
+        <section>
+          <h3>And then RxJS</h3>
+          <em>I rewrote the frontend, made /stream and /search inherit the same components and added an API /streams that would give a stream.</em>
+        </section>
+
+        <section>
+          <h3>And finally making all the streams work!</h3>
+          <em>I had always believed that streams were hard and difficult and they were for me.</em>
+        </section>
+      </section>
+
+      <section>
+        <section data-state="show-streams">
+          <h3>Demo</h3>
+        </section>
+
+        <section>
+          <h3>We switch to the browser</h3>
+          <em>That way you can see the URLs</em>
+        </section>
+
+        <section data-state="show-streams">
+          <h3>Thanks, questions?</h3>
+        </section>
       </section>
     </div>
   </div>
