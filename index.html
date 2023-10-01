@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Streams of joy and tears</title>
+  <script type="module" src="./presentation.js"></script>
+  <link rel="stylesheet" href="./style.scss">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+
+  <div class="streams" data-svg="./images/waves.svg"></div>
+
+  <div class="reveal reveal-viewport">  
+    <div class="slides">
+
+      <section data-state="show-streams">
+        <h2>Streams</h2>
+        <em>of joy and tears</em>
+      </section>
+
+      <section>
+        <h3>Chapters</h3>
+        <ul>
+          <li>About streams</li>
+          <li>The concept</li>
+          <li>The building process</li>
+        </ul>
+      </section>
+
+      <section>
+        <section data-state="show-streams">
+          <h3>About streams</h3>
+          <em>What are they and how do they work?</em>
+        </section>
+
+        <section>
+          <h3>We have progressive image loading</h3>
+
+          <div class="progressive-showcase">
+            <div>
+              <img src="/images/progressive-image.svg" />
+              <span>20%</span>
+            </div>
+
+            <div>
+              <img src="/images/progressive-image.svg" />
+              <span>60%</span>
+            </div>
+
+            <div>
+              <img src="/images/progressive-image.svg" />
+              <span>100%</span>
+            </div>
+          </div>
+
+        </section>
+
+        <section>
+          <h3>And of course video buffering</h3>
+          <img src="https://samherbert.net/svg-loaders/svg-loaders/tail-spin.svg" />
+        </section>
+
+        <section>
+          <h3>You can also have JSON streams</h3>
+          <div style="text-align: left; display: inline-block;">
+            {"name": "Lorem ipsum" }<br />
+            <span class="fragment">{ "name": "Woop Woop" }</span><br />
+            <span class="fragment">{ "name": "A streamed response" }</span>
+          </div>
+<br /><br />
+
+          <em>Notice the missing comma and no array syntax.</em>
+        </section>
+
+        <section>
+          <h3>How does it work?</h3>
+          <strong>Server side Express</strong>
+
+<pre><code data-trim data-noescape lang="JavaScript">app.get('/stream', function(req, res) {
+  res.write('ABC')
+  setTimeout(() => res.write('DEF'), 1000)
+  setTimeout(() => {
+    res.write('GHI')
+    res.end()
+  }, 2000)
+})
+</code></pre>
+        </section>
+
+        <section>
+          <h3>How does it work?</h3>
+          <strong>Client side</strong>
+
+<pre><code data-trim data-noescape lang="JavaScript">fetch(`${backend}/stream`)
+  .then((response) => response.body)
+  .then((body) => {
+    const reader = body.getReader()
+
+    reader.read()
+      .then(function pump({ done, value }) {
+        console.log(value)
+        if (done) return
+        return reader.read().then(pump)
+      })
+  })  
+</code></pre>
+        </section>
+
+        <section>
+          <h3>How does it work?</h3>
+
+          <ul>
+            <li>You can not control the chunk sizes</li>
+            <li>You need a parser such as <a href="https://github.com/uhop/stream-json"><em>stream-json</em></a></li>
+            <li>Or make it yourself with <a href="https://developer.mozilla.org/en-US/docs/Web/API/TextDecoderStream" target="_blank"><em>TextDecoderStream</em></a></li>
+          </ul>
+        </section>
+
+      </section>
+
+      <section>
+        <section data-state="show-streams">
+          <h3>The concept</h3>
+          <p>How to make media of many<br /> Christian publishers available for all?</p>
+        </section>
+  
+        <section>
+          <h3>Some considerations...</h3>
+          <ul>
+            <li>Low maintenance</li>
+            <li>Small side project</li>
+            <li>No license trouble</li>
+          </ul>
+        </section>
+  
+        <section>
+          <h3>...and their solutions</h3>
+          <ul>
+            <li>In-memory gateway to APIs</li>
+            <li>Open Source</li>
+            <li>Pluggable architecture</li>
+            <li>Self host by organisations</li>
+          </ul>
+        </section>
+  
+        <section>
+          <h3>Central challenge</h3>
+          <em>How to do full text search on potentially hundreds of sources without having a database?</em>
+        </section>
+  
+        <section>
+          <h3>Why is that hard?</h3>
+          <em>The first 20 sources might not have an answer on a specific search query</em>
+        </section>
+  
+        <section>
+          <h3>This is where streams fit in:</h3>
+
+          <em>The Streams API allows JavaScript to programmatically access streams of data received over the network and process them as desired by the developer. (MDN)</em>
+        </section>
+
+        <section>
+
+          <ul>
+            <li>Abortable requests</li>
+            <li>First in, first out (FIFO)</li>
+            <li>Better perceived performance</li>
+          </ul>
+
+        </section>
+
+        <section>
+          <div data-svg="./images/illustration.svg"></div>
+        </section>
+
+      </section>
+
+      <section>
+        <section data-state="show-streams">
+          <h3>The building process</h3>
+          <em>It was a slowly evolving prototype</em>
+        </section>
+
+        <section>
+          <h3>Initial code was created over a weekend</h3>
+          <em>After meeting others who were quite skeptical but who would love to see it work.</em>
+        </section>
+
+        <section>
+          <h3>An earlier system had existed with a database</h3>
+          <em>I got into contact with them and learned some lessons from them</em>
+        </section>
+
+      </section>
+    </div>
+  </div>
+
+</body>
+</html>
